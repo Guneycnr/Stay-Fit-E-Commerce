@@ -1,0 +1,152 @@
+﻿@using BitirmeProjesi.Data.Entities.JsonEntities
+@model AppUser
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Profil Güncelleme</title>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+    <style>
+        /* CSS Styles (SCSS syntax adapted for CSS) */
+        * {
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            background: #f1f1f1;
+            font-family: 'Merriweather', sans-serif;
+            padding: 1em;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #a8a8a8;
+            text-shadow: 1px 1px 0 rgba(255, 255, 255, 1);
+        }
+
+        form {
+            max-width: 600px;
+            text-align: center;
+            margin: 20px auto;
+        }
+
+        form input, form textarea {
+            border: 0; outline: 0;
+            padding: 1em;
+            border-radius: 8px;
+            display: block;
+            width: 100%;
+            margin-top: 1em;
+            font-family: 'Merriweather', sans-serif;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+            resize: none;
+        }
+        
+        form input:focus, form textarea:focus {
+            box-shadow: 0 0px 2px rgba(231, 76, 60, 1) !important;
+        }
+
+        form #input-submit {
+            color: white; 
+            background: #e74c3c;
+            cursor: pointer;
+        }
+        
+        form #input-submit:hover {
+            box-shadow: 0 1px 1px 1px rgba(170, 170, 170, 0.6); 
+        }
+        
+        form textarea {
+            height: 126px;
+        }
+
+        .half {
+            float: left;
+            width: 48%;
+            margin-bottom: 1em;
+        }
+
+        .right {
+            width: 50%;
+        }
+
+        .left {
+            margin-right: 2%; 
+        }
+
+        @@media (max-width: 480px) {
+            .half {
+                width: 100%; 
+                float: none;
+                margin-bottom: 0; 
+            }
+        }
+
+        /* Clearfix */
+        .cf:before, .cf:after {
+            content: " ";
+            display: table;
+        }
+
+        .cf:after {
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <h1>Profil Güncelleme</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="EditProfile">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="UserName" class="control-label">Kullanıcı Adı</label>
+                    <input asp-for="UserName" class="form-control" required readonly minlength="3" />
+                    <span asp-validation-for="UserName" class="text-danger"></span><br />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label">E-Mail</label>
+                    <input type="email" asp-for="Email" class="form-control" readonly required />  <!-- sadece okunabilir -->
+                    <span asp-validation-for="Email" class="text-danger"></span><br />
+                </div>
+                <div class="form-group">
+                    <label asp-for="PhoneNumber" class="control-label">Telefon Numarası</label>
+                    <input type="tel" asp-for="PhoneNumber" class="form-control" required />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span><br />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Adres" class="control-label">Adres</label>
+                    <input asp-for="Adres" class="form-control" required minlength="10" />
+                    <span asp-validation-for="Adres" class="text-danger"></span><br />
+                </div>
+                <div class="form-group">
+                    <label asp-for="City" class="control-label">Şehir</label>
+                    <input asp-for="City" class="form-control" required minlength="3" />
+                    <span asp-validation-for="City" class="text-danger"></span><br />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Country" class="control-label">Ülke</label>
+                    <input asp-for="Country" class="form-control" required minlength="3" />
+                    <span asp-validation-for="Country" class="text-danger"></span><br />
+                </div>
+                <div class="form-group">
+                    <select asp-for="Role" class="form-control" hidden>
+                        <!-- Select öğesi gizli -->
+                        <option value="User">User</option>
+                    </select>
+                    <span asp-validation-for="Role" class="text-danger"></span>
+
+                    <!-- Gizli form alanı -->
+                    <input type="hidden" asp-for="Role" value="User" /> <!-- Hidden input with value -->
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Kaydet" id="input-submit">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

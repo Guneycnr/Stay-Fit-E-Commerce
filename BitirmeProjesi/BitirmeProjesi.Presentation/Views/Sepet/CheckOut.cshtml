@@ -1,0 +1,132 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE Ödeme>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f8f8;
+        }
+
+
+        .payment-form {
+            width: 700px; /* Genişlik ayarı */
+            height: 300px; /* Yükseklik ayarı */
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+            .payment-form h2 {
+                color: #444;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .payment-form input {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 10px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+            }
+
+            .payment-form button {
+                width: 100%;
+                padding: 10px;
+                margin-top: 10px;
+                border: none;
+                border-radius: 5px;
+                color: #fff;
+                background-color: #008CBA;
+            }
+
+            .payment-form a {
+                display: block;
+                margin-top: 20px;
+                text-align: center;
+                color: #008CBA;
+                text-decoration: none;
+            }
+    </style>
+</head>
+<body>
+    <div class="payment-form">
+        <h2>Ödeme Bilgileri</h2>
+        <form action="/Sepet/SiparisVer" method="post">
+            <input type="text" id="creditCard" placeholder="Kart Numaranız" required>
+            <input type="text" id="expiryDate" placeholder="Son Kullanma Tarihi (MM/YY)" required>
+            <input type="text" id="ccv" placeholder="CCV" required maxlength="3">
+            <button type="submit">Ödeme Yap</button>
+        </form>
+        <a href="/Sepet">Sepete Geri Dön</a>
+    </div>
+    <script>
+        document.getElementById('expiryDate').addEventListener('input', function (e) {
+            var target = e.target, position = target.selectionEnd, length = target.value.length;
+
+            // Sadece sayı girilmesini sağlar
+            target.value = target.value.replace(/\D/g, '');
+
+            // En fazla 4 karakter girilmesini sağlar
+            if (target.value.length > 4) {
+                target.value = target.value.slice(0, 4);
+            }
+
+            // İlk iki karakterden sonra bir '/' işareti ekler
+            if (target.value.length > 2) {
+                target.value = target.value.slice(0, 2) + '/' + target.value.slice(2);
+            }
+
+            target.selectionEnd = position += ((target.value.charAt(position - 1) === '/' && target.value.charAt(length - 1) === '/' && length !== target.value.length) ? 1 : 0);
+        });
+    </script>
+    <script>
+        document.getElementById('creditCard').addEventListener('input', function (e) {
+            var target = e.target, position = target.selectionEnd, length = target.value.length;
+
+            // Sadece sayı girilmesini sağlar
+            target.value = target.value.replace(/\D/g, '');
+
+            // En fazla 16 karakter girilmesini sağlar
+            if (target.value.length > 16) {
+                target.value = target.value.slice(0, 16);
+            }
+
+            // Her 4 karakterden sonra bir '-' işareti ekler
+            target.value = target.value.replace(/(\d{4})(?=\d)/g, '$1-');
+
+            target.selectionEnd = position += ((target.value.charAt(position - 1) === '-' && target.value.charAt(length - 1) === '-' && length !== target.value.length) ? 1 : 0);
+        });
+    </script>
+    <script>
+        document.getElementById('ccv').addEventListener('input', function (e) {
+            var target = e.target;
+
+            // Sadece sayı girilmesini sağlar
+            target.value = target.value.replace(/\D/g, '');
+        });
+    </script>   
+    <script>
+        // Formdaki butona tıklanmadan önce tüm kutucukların dolu olmasını sağlayan JavaScript kodu
+        document.querySelector('form').addEventListener('submit', function (event) {
+            var inputs = this.querySelectorAll('input');
+            for (var i = 0; i < inputs.length; i++) {
+                if (!inputs[i].value) {
+                    event.preventDefault();
+                    alert('Lütfen tüm kutucukları doldurunuz.');
+                    return;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

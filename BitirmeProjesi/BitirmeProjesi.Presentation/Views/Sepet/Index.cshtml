@@ -1,0 +1,113 @@
+﻿@model Sepet
+
+<style>
+    .product__cart__item__pic img {
+        max-width: 100px; /* Resmin en fazla 100px genişliğinde olmasını sağlar */
+        height: auto; /* Orijinal oranı korur */
+    }
+</style>
+
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb__text">
+                    <h4>Sepet</h4>
+                    <div class="breadcrumb__links">
+                        <a href="/Home">Ana Sayfa</a>
+                        <a href="/Shop">Alışveriş</a>
+                        <span>Sepet</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+<!-- Shopping Cart Section Begin -->
+<section class="shopping-cart spad">
+    <div class="container">
+        @if (Model.Urunler == null || Model.Urunler.Count == 0)
+        {
+            <div class="alert alert-info">Sepetinizde ürün yok.</div> <!-- Sepet boşsa mesaj -->
+        }
+        else
+        {
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="shopping__cart__table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Ürün</th>
+                                    <th>Adet</th>
+                                    <th>Toplam</th>
+                                    <th>İşlemler</th> <!-- Silmek ve güncellemek için -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Urunler)
+                                {
+                                    <tr>
+                                        <td class="product__cart__item">
+                                            <div class="product__cart__item__pic">
+                                                <img src="@item.Photourl" alt="photo" /> <!-- Ürün resmi -->
+                                            </div>
+                                            <div class="product__cart__item__text">
+                                                <h6>@item.ProductName</h6> <!-- Ürün adı -->
+                                                <h5>@String.Format("{0:#,0}", item.UnitPrice)₺</h5> <!-- Ürün fiyatı -->
+                                            </div>
+                                        </td>
+
+                                        <!-- Miktarı değiştirmek için form -->
+                                        <td class="quantity__item">
+                                            <form action="@Url.Action("UpdateQuantity", "Sepet")" method="post">
+                                                @Html.AntiForgeryToken()
+                                                <input type="hidden" name="urunId" value="@item.Id" />
+                                                <input type="number" name="quantity" value="@item.Quantity" min="1" max="99" step="1" />
+                                                <button type="submit">Güncelle</button> <!-- Değişiklik için düğme -->
+                                            </form>
+                                        </td>
+
+                                        <td class="cart__price">@String.Format("{0:#,0}", item.UnitPrice * item.Quantity)₺</td> <!-- Toplam fiyat -->
+                                        <!-- Silme butonunu en sağda tutun -->
+                                        <td class="cart__close">
+                                            <form action="@Url.Action("Kaldir", "Sepet")" method="post">
+                                                @Html.AntiForgeryToken()
+                                                <input type="hidden" name="urunId" value="@item.Id" />
+                                                <button type="submit">
+                                                    <i class="fa fa-close"></i> <!-- Silme ikonu -->
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="continue__btn">
+                                <a href="/Shop">Alışverişe Devam Et</a> <!-- Alışverişe geri dönmek için -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="cart__total">
+                        <h6>Sepet</h6>
+                        <ul>
+                            <li>
+                                Toplam Fiyat
+                                <span>@String.Format("{0:#,0}", Model.Urunler.Sum(u => u.UnitPrice * u.Quantity))₺</span> <!-- Toplam fiyat -->
+                            </li>
+                        </ul>
+                        <a href="/Sepet/CheckOut" class="primary-btn">Alışverişi Tamamla</a> <!-- Ödeme sayfasına yönlendirme -->
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+<!-- Shopping Cart Section End -->

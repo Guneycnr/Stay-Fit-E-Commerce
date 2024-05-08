@@ -1,0 +1,152 @@
+﻿@model BitirmeProjesi.Data.Entities.JsonEntities.Product
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<style>
+    /* Genel Sayfa Stili */
+    body {
+        font-family: 'Roboto', sans-serif; /* Modern font */
+        background-color: #f5f5f5; /* Hafif gri arka plan */
+    }
+
+    /* Başlık Stili */
+    h1, h4 {
+        color: #333; /* Koyu gri başlık rengi */
+    }
+
+    hr {
+        border: 0; /* Alt çizgi kenarlığı kaldırılır */
+        height: 1px;
+        background-color: #ddd; /* Hafif gri alt çizgi */
+    }
+
+    /* Form Stili */
+    .form-group {
+        margin-bottom: 1rem; /* Form alanları arasında boşluk */
+    }
+
+    input, select {
+        border: 1px solid #ccc; /* Hafif gri kenarlık */
+        border-radius: 4px; /* Yuvarlatılmış köşeler */
+        padding: 0.5rem; /* İç boşluk */
+    }
+
+        input:focus, select:focus {
+            border-color: #007bff; /* Odaklanınca mavi kenarlık */
+            outline: none; /* Odaklanmada kenarlık efektleri kaldırılır */
+        }
+
+    /* Buton Stili */
+    .btn {
+        border-radius: 4px; /* Yuvarlatılmış köşeler */
+        padding: 8px 16px; /* İç boşluk */
+        color: white; /* Beyaz yazı rengi */
+        border: none; /* Kenarlık yok */
+        transition: background-color 0.3s; /* Hover geçiş efekti */
+    }
+
+    .btn-primary {
+        background-color: #007bff; /* Mavi tonlu ana buton */
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Hover efekti için koyulaşma */
+        }
+
+    .btn-link {
+        padding: 8px 16px; /* İç boşluk */
+        border-radius: 4px; /* Yuvarlatılmış köşeler */
+        text-decoration: none; /* Alt çizgi yok */
+        color: white; /* Beyaz yazı rengi */
+        background-color: #007bff; /* Mavi arka plan */
+        transition: background-color 0.3s; /* Hover efekti */
+    }
+
+        .btn-link:hover {
+            background-color: #0056b3; /* Hover efekti için koyulaşma */
+        }
+</style>
+
+<div class="container mt-5">
+    <!-- Sayfayı ortalar ve üst boşluk sağlar -->
+    <h1>Create Product</h1> <!-- Başlık -->
+
+    <h4>Product Details</h4>
+    <hr />
+
+    <div class="row">
+        <!-- Form alanı -->
+        <div class="col-md-6 offset-md-3">
+            <!-- Formu ortalar -->
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                <!-- Form alanları -->
+                <div class="form-group">
+                    <label asp-for="ProductName" class="control-label"></label>
+                    <input asp-for="ProductName" class="form-control" /> 
+                    <span asp-validation-for="ProductName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="UsedMaterial" class="control-label"></label>
+                    <input asp-for="UsedMaterial" class="form-control" /> 
+                    <span asp-validation-for="UsedMaterial" class="text-danger"></span> 
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="PhotoUrl" class="control-label"></label>
+                    <input asp-for="PhotoUrl" class="form-control" /> 
+                    <span asp-validation-for="PhotoUrl" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="MidPhoto" class="control-label"></label>
+                    <input asp-for="MidPhoto" class="form-control" />
+                    <span asp-validation-for="MidPhoto" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="LastPhoto" class="control-label"></label>
+                    <input asp-for="LastPhoto" class="form-control" />
+                    <span asp-validation-for="LastPhoto" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="UnitPrice" class="control-label"></label>
+                    <input asp-for="UnitPrice" class="form-control" />
+                    <span asp-validation-for="UnitPrice" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="UnitStock" class="control-label"></label>
+                    <input asp-for="UnitStock" class="form-control" />
+                    <span asp-validation-for="UnitStock" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="CategoryId" class="control-label"></label>
+                    <input asp-for="CategoryId" class="form-control" />
+                    <span asp-validation-for="CategoryId" class="text-danger"></span>
+                </div>
+
+                <!-- Kaydet Butonu -->
+                <div class="form-group">
+                    <input type="submit" value="Kaydet" class="btn btn-primary" /> <!-- Kaydet butonu -->
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <!-- Geri Dön Bağlantısı -->
+        <a asp-action="Index" class="btn-link">Geri Dön</a> <!-- Buton benzeri "Geri Dön" -->
+    </div>
+</div>

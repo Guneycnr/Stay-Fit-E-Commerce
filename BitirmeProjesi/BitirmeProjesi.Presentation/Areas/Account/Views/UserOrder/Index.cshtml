@@ -1,0 +1,46 @@
+﻿@using BitirmeProjesi.Data.Entities.JsonEntities
+@model List<Order>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Layoutu getir
+    var sortedModel = Model?.OrderByDescending(order => order.OrderDate).ToList(); // Null kontrolü ve sıralama
+}
+
+<div class="container mt-4">
+    <h2 class="mb-3">Siparişlerim</h2>
+
+    @if (sortedModel == null || sortedModel.Count == 0) // null kontrolü
+    {
+        <div class="alert alert-info">Hiç siparişiniz yok.</div> <!-- Bilgi mesajı -->
+    }
+    else
+    {
+        <table class="table table-striped">
+            <!-- Çizgili tablo -->
+            <thead class="thead-dark">
+                <!-- Koyu başlık -->
+                <tr>
+                    <th>Sipariş Sahibi</th>
+                    <th>Sipariş Tarihi</th>
+                    <th>Kargo Şirketi</th>
+                    <th>Toplam Fiyat</th>
+                    <th>Durum</th>
+                    <th>Teslimat Adresi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in sortedModel)
+                {
+                    <tr>
+                        <td>@order.UserName</td> <!-- Kullanıcı adı -->
+                        <td>@order.OrderDate.ToString("dd-MM-yyyy")</td> <!-- Sipariş tarihi -->
+                        <td>@order.CompanyName</td> <!-- Kargo Şirketi -->
+                        <td>@order.TotalPrice.ToString("C")</td> <!-- Toplam fiyat -->
+                        <td>Kargoda</td> <!-- Sipariş durumu -->
+                        <td>@order.Adres</td> <!-- Sipariş adresi -->
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div><br /><br />

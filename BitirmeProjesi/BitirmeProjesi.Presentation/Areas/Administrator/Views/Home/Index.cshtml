@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Paneli</title>
+
+    <!-- Google Font için CSS Bağlantısı -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:700&display=swap" />
+
+    <!-- CSS Stili -->
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rubik', sans-serif;
+            font-size: 1rem;
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            min-height: 100vh;
+            background: #ffffff;
+            flex-direction: column; /* Dikey olarak hizalama */
+        }
+
+        .main-button {
+            font-weight: 600;
+            color: #382b22;
+            text-transform: uppercase;
+            padding: 1.25em 2em;
+            background: #fff0f0;
+            border: 2px solid #b18597;
+            border-radius: 0.75em;
+            transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background 150ms cubic-bezier(0, 0, 0.58, 1);
+            margin-bottom: 2em; /* Diğer düğmelerle aradaki mesafe */
+        }
+
+            .main-button:hover {
+                background: #ffe9e9;
+                transform: translateY(-0.1em);
+            }
+
+            .main-button:active {
+                background: #ffe3e2;
+                transform: translateY(0.1em);
+            }
+
+        .button-list {
+            display: flex;
+            flex-direction: column; /* Alt alta hizalama */
+            gap: 1em; /* Düğmeler arasına boşluk bırak */
+        }
+
+        .button {
+            font-weight: 600;
+            color: #382b22;
+            text-transform: uppercase;
+            padding: 1.25em 2em;
+            background: #f0f0f0;
+            border: 2px solid #b18597;
+            border-radius: 0.75em;
+            transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background 150ms cubic-bezier(0, 0, 0.58, 1);
+        }
+
+            .button:hover {
+                background: #e0e0e0;
+            }
+
+            .button:active {
+                background: #d0d0d0;
+            }
+    </style>
+</head>
+<body>
+    <button class="main-button" onclick="window.location.href='/Home/Index';">Mağzaya Geri Dön</button>
+
+    <div class="button-list">
+        <button class="button" onclick="window.location.href='/Administrator/AppUsers/Index';">AppUsers</button>
+        <button class="button" onclick="window.location.href='/Administrator/Categories/Index';">Categories</button>
+        <button class="button" onclick="window.location.href='/Administrator/Comments/Index';">Comments</button>
+        <button class="button" onclick="window.location.href='/Administrator/Contacts/Index';">Contacts</button>
+        <button class="button" onclick="window.location.href='/Administrator/Orders/Index';">Orders</button>
+        <button class="button" onclick="window.location.href='/Administrator/Products/Index';">Products</button>
+        <button class="button" onclick="window.location.href='/Administrator/Shippers/Index';">Shippers</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+﻿@using BitirmeProjesi.Data.Entities.JsonEntities
+@model List<Product>
+
+
+  <!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb__text">
+                    <h4>Alışveriş</h4>
+                    <div class="breadcrumb__links">
+                        <a href="/Home">Ana Sayfa</a>
+                        <span>Alışveriş</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+<!-- Shop Section Begin -->
+<section class="shop spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="shop__sidebar">
+                    <div class="shop__sidebar__accordion">
+                        <div class="accordion" id="accordionExample">
+                            <div class="card">
+                                <div class="card-heading">
+                                    <a data-toggle="collapse" data-target="#collapseOne">Categories</a>
+                                </div>
+                                <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="shop__sidebar__categories">
+                                            <ul class="nice-scroll">
+                                                <li><a href="/Shop">TÜM ÜRÜNLER</a></li>
+                                                <li><a href="/Shop/compression">COMPRESSION</a></li>
+                                                <li><a href="/Shop/hoodie">HOODIE</a></li>
+                                                <li><a href="/Shop/tshirt">T-SHIRT & ATLET</a></li>
+                                                <li><a href="/Shop/joger">JOGGER & ŞORT</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>               
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="shop__product__option">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="shop__product__option__left">
+                                <p>Ürünler</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                @foreach (Product item in Model)
+                {
+                         <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <a href="/Home/Detail/@item.Id">
+                                    <div class="product__item__pic set-bg" data-setbg="@item.PhotoUrl">
+                                    </div>
+                                </a>
+                                <div class="product__item__text">
+                                    <h6>@item.ProductName</h6>
+                                    <a href="/Home/Detail/@item.Id" class="add-cart">Ürün Detay</a>
+                                        <h5>@String.Format("{0:#,0}", item.UnitPrice)₺</h5>
+                                </div>
+                            </div>
+                        </div> 
+                }
+                </div>
+        </div>
+    </div>
+</section>
+<!-- Shop Section End -->

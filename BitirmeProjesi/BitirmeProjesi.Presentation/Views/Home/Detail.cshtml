@@ -1,0 +1,147 @@
+﻿@using BitirmeProjesi.Data.Entities.JsonEntities
+@model Product
+
+<!-- Shop Details Section Begin -->
+<section class="shop-details">
+    <div class="product__details__pic">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="product__details__breadcrumb">
+                        <a href="/Home">Ana Sayfa</a>
+                        <a href="/Shop">Alışveriş</a>
+                        <span>Ürün Detay<span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-3">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
+                                <div class="product__thumb__pic set-bg" data-setbg="@Model.PhotoUrl">
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">
+                                <div class="product__thumb__pic set-bg" data-setbg="@Model.MidPhoto">
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">
+                                <div class="product__thumb__pic set-bg" data-setbg="@Model.LastPhoto">
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 col-md-9">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                            <div class="product__details__pic__item">
+                                <img src="@Model.PhotoUrl" alt="birinci">
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tabs-2" role="tabpanel">
+                            <div class="product__details__pic__item">
+                                <img src="@Model.MidPhoto" alt="ikinci">
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tabs-3" role="tabpanel">
+                            <div class="product__details__pic__item">
+                                <img src="@Model.LastPhoto" alt="üçüncü">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="product__details__content">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-8">
+                    <div class="product__details__text">
+                        <h4>@Model.ProductName</h4>
+                        <h3>@String.Format("{0:#,0}", Model.UnitPrice)₺</h3>
+                        <p>
+                            Ürünlerimiz tek bedendir
+                        </p>
+                        <div class="product__details__option">
+                        </div>
+                        <div class="product__details__cart__option">
+                            <!-- Ürün kimliğini dinamik olarak kullanarak bağlantı oluşturma -->
+                            <a href="@Url.Action("Ekle", "Sepet", new { urunId = @Model.Id })" class="primary-btn">Sepete Ekle</a>
+                        </div>
+                        <div class="product__details__last__option">
+                            <h5><span>Güvenli Ödeme Yöntemleri</span></h5>
+                            <img src="~/img/shop-details/details-payment.png" alt="">
+                            <ul>
+                                <li><span>Kategori : </span> @Model.CategoryName </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="product__details__tab">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#tabs-5"
+                                   role="tab">Ürün Açıklaması</a>
+                            </li>
+@*                             ilerde yorum alanı eklenecek
+                                <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-6" role="tab">
+                                    Kullanıcı Yorumları
+                                </a>
+                                </li>
+ *@                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tabs-5" role="tabpanel">
+                                <div class="product__details__tab__content">
+                                    <div class="product__details__tab__content__item">
+                                        <p>
+                                            @Model.Description
+                                        </p>
+                                    </div>
+                                    <div class="product__details__tab__content__item">
+                                        <h5>Kullanılan Malzeme</h5>
+                                        <p>
+                                            @Model.UsedMaterial
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                          @*  ilerleyen zamanda yorum alanı eklenecek
+                              
+                          <div class="tab-pane" id="tabs-6" role="tabpanel">
+                                <div class="product__details__tab__content">
+                                    @if (Model.Comments != null && Model.Comments.Count > 0)
+                                    {
+                                        @foreach (var comment in Model.Comments)
+                                        {
+                                            <div class="product__details__tab__content__item">
+                                                <h5>@comment.UserName</h5>
+                                                <p>@comment.CommentLine</p>
+                                            </div>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <p>Henüz yorum yok.</p>
+                                    }
+                                </div> *@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> <br /><br /><br />
+<!-- Shop Details Section End -->

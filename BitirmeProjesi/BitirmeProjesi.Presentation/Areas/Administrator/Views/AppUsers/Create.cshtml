@@ -1,0 +1,147 @@
+﻿@model BitirmeProjesi.Data.Entities.JsonEntities.AppUser
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<style>
+    /* Sayfa Stili */
+    body {
+        font-family: 'Roboto', sans-serif; /* Modern ve okunaklı bir font */
+        background-color: #f5f5f5; /* Hafif gri arka plan */
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Başlık Stili */
+    h1, h4 {
+        color: #333; /* Koyu gri başlık rengi, gözler için daha az yorucu */
+    }
+
+    /* Form Stili */
+    .form-group {
+        margin-bottom: 1rem; /* Form elemanları arasında boşluk */
+    }
+
+    input, select {
+        border: 1px solid #ccc; /* Hafif gri kenarlık, minimalist ve temiz görünüm */
+        border-radius: 4px; /* Yuvarlatılmış köşeler */
+        padding: 0.5rem; /* İç boşluk ekleyerek rahat kullanım */
+    }
+
+        input:focus, select:focus {
+            border-color: #007bff; /* Odaklanınca mavi kenarlık, dikkat çekici */
+            outline: none;
+        }
+
+    /* Buton Stili */
+    .btn {
+        border-radius: 4px; /* Yuvarlatılmış butonlar */
+        padding: 0.5rem 1rem; /* Rahat kullanım için yeterli boşluk */
+    }
+
+    .btn-primary {
+        background-color: #007bff; /* Ana renkli buton (mavi), canlı ve dikkat çekici */
+        border: none; /* Kenarlık yok */
+        color: white; /* Beyaz buton yazısı */
+    }
+
+    .btn-secondary {
+        background-color: #6c757d; /* Gri buton, daha nötr bir alternatif */
+        border: none;
+        color: white; /* Beyaz buton yazısı */
+    }
+
+        .btn-primary:hover, .btn-secondary:hover {
+            opacity: 0.8; /* Hover efekti, kullanıcı etkileşimini teşvik eder */
+        }
+
+    /* Link Stili */
+    a {
+        text-decoration: none; /* Linklerin altını çizmez */
+        color: #007bff; /* Mavi renk, görünürlük için iyi */
+    }
+
+        a:hover {
+            text-decoration: underline; /* Üzerine gelince altı çizilir */
+        }
+
+    /* Validation Hata Mesajları */
+    .text-danger {
+        color: #dc3545; /* Kırmızı hata mesajı, dikkat çeker */
+    }
+
+</style>
+
+<div class="container mt-5">
+    <!-- Kenarlardan ve üstten boşluk sağlar -->
+    <h1 class="mb-4">Yeni Kullanıcı Oluştur</h1> <!-- Başlıklar -->
+    <h4>Kullanıcı Bilgileri</h4>
+    <hr class="mb-4" /> <!-- Alt çizgi ve boşluk -->
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <!-- Formu ortalar -->
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div> <!-- Hata mesajları -->
+                <!-- Kullanıcı Adı -->
+                <div class="form-group">
+                    <label asp-for="UserName" class="control-label"></label>
+                    <input asp-for="UserName" class="form-control" placeholder="Kullanıcı Adı Giriniz" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+
+                <!-- E-posta -->
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" type="email" placeholder="Email Giriniz" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <!-- Telefon Numarası -->
+                <div class="form-group">
+                    <label asp-for="PhoneNumber" class="control-label"></label>
+                    <input asp-for="PhoneNumber" class="form-control" type="tel" placeholder="Telefon Numarası Giriniz" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+
+                <!-- Rol Seçimi -->
+                <div class="form-group">
+                    <label asp-for="Role" class="control-label"></label>
+                    <select asp-for="Role" class="form-control">
+                        <option value="Admin">Admin</option>
+                        <option value="User">User</option>
+                    </select>
+                    <span asp-validation-for="Role" class="text-danger"></span>
+                </div>
+
+                <!-- Adres -->
+                <div class="form-group">
+                    <label asp-for="Adres" class="control-label"></label>
+                    <input asp-for="Adres" class="form-control" placeholder="Açık Adres Giriniz" />
+                    <span asp-validation-for="Adres" class="text-danger"></span>
+                </div>
+
+                <!-- Şehir -->
+                <div class="form-group">
+                    <label asp-for="City" class="control-label"></label>
+                    <input asp-for="City" class="form-control" placeholder="Şehir Giriniz" />
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+
+                <!-- Ülke -->
+                <div class="form-group">
+                    <label asp-for="Country" class="control-label"></label>
+                    <input asp-for="Country" class="form-control" placeholder="Ülke Giriniz" />
+                    <span asp-validation-for="Country" class="text-danger"></span>
+                </div>
+
+                <!-- Butonlar -->
+                <div class="form-group mt-4">
+                    <input type="submit" value="Kaydet" class="btn btn-primary" />
+                    <a asp-action="Index" class="btn btn-secondary ml-3">Geri Dön</a> <!-- İkincil buton -->
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

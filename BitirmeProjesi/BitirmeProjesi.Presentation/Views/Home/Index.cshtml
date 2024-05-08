@@ -1,0 +1,171 @@
+﻿@using BitirmeProjesi.Data.Entities.JsonEntities
+@model List<Product>
+
+<!-- Hero Section Begin -->
+<section class="hero">
+    <div class="hero__slider owl-carousel">
+        <a href="/Shop">
+        <div class="hero__items set-bg" data-setbg="https://powergearathletix.com/cdn/shop/collections/SHOPIFY_BANNER_compression_1200x1200.png?v=1699664343">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-7 col-md-8">
+                        <div class="hero__text">                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+        <div class="hero__items set-bg" data-setbg="https://stayfitwears.com/cdn/shop/files/stoklar_yenilendi.png?v=1705598017&width=3840%22">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-7 col-md-8">
+                        <div class="hero__text">                         
+                            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                            <a href="/Shop" class="primary-btn">Alışverişe Başla<span class="arrow_right"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Hero Section End -->
+<!-- Banner Section Begin -->
+<section class="banner spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="banner__item banner__item--middle">
+                    <div class="banner__item__pic">
+                        <img src="https://stayfitwears.com/cdn/shop/files/AHWWW.png?v=1699389636&width=533" alt="image">
+                        </div>
+                    <div class="banner__item__text">
+                        <h2>En Çok Talep Gören Ürünler</h2>
+                        <a href="/Shop">Alışverişe Başla</a>
+                    </div>
+                </div>
+            </div>
+                <div class="col-lg-7">
+                <div class="banner__item banner__item--last">
+                    <div class="banner__item__pic">
+                        <img src="https://stayfitwears.com/cdn/shop/files/DSC098751_fb173841-d74e-4a62-8b04-2f304195ccd1.png?v=1704041830&width=533" alt="image">
+                    </div>                  
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Banner Section End -->
+<!-- Product Section Begin -->
+    <section class="product spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="filter__controls">
+                    <li class="active" data-filter="*">Çok Satanlar</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row product__filter">
+            @foreach (Product item in Model)
+        {
+                if (item.Id >= 10)
+                {
+                    break; // 10 numaralı id ye gelene kadar tüm ürünleri ekrana basar
+                }
+                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
+                    <div class="product__item">
+                        <a href="/Home/Detail/@item.Id">
+                        <div class="product__item__pic set-bg" data-setbg="@item.PhotoUrl">
+                        </div></a>
+                        <div class="product__item__text">
+                            <h6>@item.ProductName</h6>
+                            <a href="/Home/Detail/@item.Id" class="add-cart">Ürün Detay</a>
+                        </div>
+                        <h5>@String.Format("{0:#,0}", item.UnitPrice)₺</h5>
+                    </div>
+                </div>
+        }
+         </div>
+    </div>
+</section>
+<!-- Product Section End -->
+<!-- Categories Section Begin -->
+<section class="categories spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="categories__text">
+                    <h2><br /> <span>Çok Beklenen Taytlı Şort</span> <br /></h2>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="categories__hot__deal">
+                            <img src="https://productimages.hepsiburada.net/s/377/375-500/110000395913582.jpg" alt="">
+                    <div class="hot__deal__sticker">
+                        <span>Lansmana Özel</span>
+                        <h5>280₺</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 offset-lg-1">
+                <div class="categories__deal__countdown">
+                    <span>Lansmana Kalan Süre</span>
+                    <h2>Taytlı Şort</h2>
+                    <div class="categories__deal__countdown__timer" id="countdown">
+                        <div class="cd-item">
+                            <span>1</span>
+                            <p>Gün</p>
+                        </div>
+                        <div class="cd-item">
+                            <span>1</span>
+                            <p>Saat</p>
+                        </div>
+                        <div class="cd-item">
+                            <span>50</span>
+                            <p>Dakika</p>
+                        </div>
+                        <div class="cd-item">
+                            <span>18</span>
+                            <p>Saniye</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Categories Section End -->
+<!-- Instagram Section Begin -->
+<section class="instagram spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="instagram__pic">
+                    <div class="instagram__pic__item set-bg" data-setbg="https://stayfitwears.com/cdn/shop/files/BRK.png?v=1697738180"></div>
+                    <div class="instagram__pic__item set-bg" data-setbg="https://stayfitwears.com/cdn/shop/files/DSC008251.png?v=1704748094&width=533"></div>
+                    <div class="instagram__pic__item set-bg" data-setbg="https://stayfitwears.com/cdn/shop/files/aaaa_cb16a070-f40b-4924-88ba-11e713844892.png?v=1697745577"></div>
+                    <div class="instagram__pic__item set-bg" data-setbg="https://stayfitwears.com/cdn/shop/files/preview_images/e30cd03c0bef408faab203043d9b8d52.thumbnail.0000000000_1100x.jpg?v=1697836241"></div>
+                    <div class="instagram__pic__item set-bg" data-setbg="https://stayfitwears.com/cdn/shop/files/DSC098751_fb173841-d74e-4a62-8b04-2f304195ccd1.png?v=1704041830&width=533"></div>
+                    <div class="instagram__pic__item set-bg" data-setbg="https://stayfitwears.com/cdn/shop/files/DSC008651.png?v=1704747948&width=533"></div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="instagram__text">
+                    <h2>Instagram</h2>
+                    <p>
+                       Ürünlerimiz hakkında her şeyden anında haberdar olmak için instagram sayfamızı takip etmeyi unutmayın 
+                    </p>                          
+                    <h3>
+                       stayfitwears
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br /><br /><br /><br />
+<!-- Instagram Section End -->
+

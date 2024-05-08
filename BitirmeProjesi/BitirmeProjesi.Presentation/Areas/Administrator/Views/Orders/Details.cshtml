@@ -1,0 +1,94 @@
+﻿@model BitirmeProjesi.Data.Entities.JsonEntities.Order
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<style>
+    /* Genel Sayfa Stili */
+    body {
+        font-family: 'Roboto', sans-serif; /* Modern font */
+        background-color: #f5f5f5; /* Hafif gri arka plan */
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Başlık Stili */
+    h1 {
+        color: #333; /* Koyu gri başlık rengi */
+    }
+
+    hr {
+        border: 0; /* Alt çizgi kenarlığı kaldırılır */
+        height: 1px;
+        background-color: #ddd; /* Hafif gri alt çizgi */
+    }
+
+    /* Tablo Stili */
+    .table {
+        border-collapse: collapse; /* Hücre kenarlarını birleştirir */
+        width: 100%; /* Tam genişlikte tablo */
+        background-color: white; /* Beyaz arka plan */
+    }
+
+        .table th, .table td {
+            border: 1px solid #ddd; /* Hafif gri kenarlık */
+            padding: 8px; /* İç boşluk */
+            text-align: left; /* Metin hizalaması */
+        }
+
+        .table tbody tr:hover {
+            background-color: #f1f1f1; /* Satır üzerine gelince hafif gri arka plan */
+        }
+
+    /* Buton Stili */
+    .btn-link {
+        padding: 8px 16px; /* İç boşluk */
+        border-radius: 4px; /* Yuvarlatılmış köşeler */
+        text-decoration: none; /* Alt çizgi kaldırılır */
+        color: white; /* Beyaz yazı rengi */
+        background-color: #007bff; /* Mavi arka plan */
+        transition: background-color 0.3s; /* Hover geçiş efekti */
+    }
+
+        .btn-link:hover {
+            background-color: #0056b3; /* Hover efekti için koyulaşma */
+        }
+</style>
+
+<div class="container mt-5">
+    <!-- Sayfayı ortalar ve üst boşluk sağlar -->
+    <h1>Detay</h1> <!-- Başlık -->
+
+    <h4>Order (Sipariş)</h4> <!-- Alt başlık -->
+    <hr /> <!-- Alt çizgi -->
+
+    <table class="table">
+        <!-- Detayları tablo halinde gösterir -->
+        <tr>
+            <th>UserName</th> <!-- Tablo başlığı -->
+            <td>@Html.DisplayFor(model => model.UserName)</td> <!-- Ürün Adı -->
+        </tr>
+        <tr>
+            <th>OrderDate</th> <!-- Tablo başlığı -->
+            <td>@Html.DisplayFor(model => model.OrderDate)</td> <!-- Kullanıcı Adı -->
+        </tr>
+        <tr>
+            <th>CompanyName</th> <!-- Tablo başlığı -->
+            <td>@Html.DisplayFor(model => model.CompanyName)</td> <!-- Yorum içeriği -->
+        </tr>
+        <tr>
+            <th>Adres</th> <!-- Tablo başlığı -->
+            <td>@Html.DisplayFor(model => model.Adres)</td> <!-- Yorum içeriği -->
+        </tr>
+        <tr>
+            <th>TotalPrice</th> <!-- Tablo başlığı -->
+            <td>@Html.DisplayFor(model => model.TotalPrice)</td> <!-- Yorum içeriği -->
+        </tr>
+    </table>
+    <br />
+    <div>
+        <!-- Geri dön bağlantısı -->
+        <a asp-action="Index" class="btn-link">Geri Dön</a> <!-- Buton benzeri "Geri Dön" -->
+    </div>
+</div>

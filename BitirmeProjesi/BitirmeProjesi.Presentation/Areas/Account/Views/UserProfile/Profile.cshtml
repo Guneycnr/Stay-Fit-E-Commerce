@@ -1,0 +1,194 @@
+﻿@using BitirmeProjesi.Data.Entities.JsonEntities
+@model AppUser
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+
+    <style>
+        /* CSS Değişkenler */
+        :root {
+            --blue: #457b8c;
+            --gray: #f0f0f0;
+            --red: #ce4034;
+            --green: #08b8b8;
+            --primary-font-color: #798796;
+            --secondary-font-color: #595556;
+            --primary-font: 'PT Sans', sans-serif;
+            --secondary-font: 'Oswald', sans-serif;
+        }
+
+        /* Başlıklar */
+        h1 {
+            font-family: var(--secondary-font);
+            text-transform: uppercase;
+            color: var(--primary-font-color);
+            font-size: 2.5rem;
+        }
+
+        h5 {
+            font-family: var(--secondary-font);
+            text-transform: uppercase;
+            color: var(--primary-font-color);
+            font-size: 1.563rem;
+        }
+
+        .fullwidth {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Boşluklar */
+        .-spacing {
+            &-a
+
+        {
+            margin-top: 3.125rem;
+        }
+
+        &-b {
+            margin-top: 1.875rem;
+        }
+
+        }
+
+        /* Tipografi */
+        .-typo {
+            &-copy
+
+        {
+            margin-bottom: 1.875rem;
+            color: var(--secondary-font-color);
+            font-size: 1rem;
+            font-family: var(--primary-font);
+            &--blue
+
+        {
+            color: var(--primary-font-color);
+        }
+
+        }
+        }
+
+        /* Profil Resmi */
+        .profile-image {
+            overflow: hidden;
+            &:hover .edit-profile-image
+
+        {
+            opacity: 1;
+        }
+
+        }
+
+        /* Profil Düzenleme */
+        .edit-profile-image {
+            position: absolute;
+            top: 0;
+            left: 0.9375rem;
+            right: 0.9375rem;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.625rem;
+            cursor: pointer;
+            opacity: 0;
+            background: linear-gradient(to bottom, rgba(231,211,116,0.7) 0%, rgba(8,184,184,0.7) 100%);
+            transition: all 0.2s ease-in-out;
+        }
+
+        .edit-profile-image__information {
+            color: #FFF;
+            font-size: 1.125rem;
+        }
+
+        .edit-profile-image__label {
+            font-family: var(--primary-font);
+            margin-left: 0.5rem;
+        }
+
+        /* Düğmeler */
+        .btn {
+            border: none;
+            padding: 0.875rem 0.625rem;
+            cursor: pointer;
+        }
+
+        .btn__label {
+            font-family: var(--primary-font);
+            margin-left: 0.5rem;
+        }
+
+        .btn--green {
+            background: var(--green);
+            color: #FFF;
+        }
+    </style>
+</head>
+<body>
+    <hr />
+    <div class="container">
+        <div class="row -spacing-a">
+            <div class="col-md-12">
+                <h1>Merhaba @Model.UserName </h1><br />
+            </div>
+        </div>
+        <div class="row -spacing-a">
+            <div class="col-md-4">
+                <div class="profile-image">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3106/3106921.png" class="fullwidth" />
+                    <div class="edit-profile-image">
+                        <span class="edit-profile-image__information">
+                            <span class="fa fa-camera"></span>
+                            <span class="edit-profile-image__label"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <h5>Kullanıcı Bilgileri</h5><br />
+                <div class="row -spacing-b">
+                    <div class="col-md-3">
+                        <p class="-typo-copy">Kullanıcı Adı</p>
+                        <p class="-typo-copy">Telefon</p>
+                        <p class="-typo-copy">Açık Adres</p>
+                        <p class="-typo-copy">Şehir</p>
+                        <p class="-typo-copy">Ülke</p>
+                    </div>
+                    <div class="col-md-3">
+                        <p class="-typo-copy -typo-copy--blue">@Model.UserName</p>
+                        <p class="-typo-copy -typo-copy--blue">@Model.PhoneNumber</p>
+                        <p class="-typo-copy -typo-copy--blue">@Model.Adres</p>
+                        <p class="-typo-copy -typo-copy--blue">@Model.City</p>
+                        <p class="-typo-copy -typo-copy--blue">@Model.Country</p>
+                    </div>
+                    <div class="col-md-3">
+                        <p class="-typo-copy">E-Mail</p>
+                        <p class="-typo-copy">Şifre</p>
+
+                        <a href="/Account/UserProfile/UpdateProfile" class="btn btn--green">
+                            <span class="btn__icon fa fa-pencil"></span>
+                            <span class="btn__label">Profili Düzenle</span>
+                        </a>
+
+                    </div>
+                    <div class="col-md-3">
+                        <p class="-typo-copy -typo-copy--blue">@Model.Email</p>
+                        <p class="-typo-copy -typo-copy--blue">******</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <br />
+</body>
+</html>

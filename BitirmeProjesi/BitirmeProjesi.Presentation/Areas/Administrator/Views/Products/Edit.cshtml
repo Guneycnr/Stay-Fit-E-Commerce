@@ -1,0 +1,169 @@
+﻿@model BitirmeProjesi.Data.Entities.JsonEntities.Product
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<style>
+    /* Geri Dön bağlantısını buton gibi yapmak için stil */
+    .btn-link {
+        display: inline-block; /* Buton benzeri düzen */
+        padding: 8px 16px; /* İç boşluklar */
+        border-radius: 4px; /* Yuvarlatılmış köşeler */
+        background-color: #6c757d; /* Gri arka plan (Bootstrap'in secondary rengi) */
+        color: white; /* Beyaz yazı */
+        text-decoration: none; /* Alt çizgi yok */
+        font-weight: bold; /* Kalın yazı */
+        transition: background-color 0.3s; /* Hover efekti */
+    }
+
+        .btn-link:hover {
+            background-color: #5a6268; /* Hover efekti için koyulaşma */
+        }
+
+    /* Sayfa Stili */
+    body {
+        font-family: 'Roboto', sans-serif; /* Modern font */
+        background-color: #f5f5f5; /* Hafif gri arka plan */
+    }
+
+    h1 {
+        color: #333; /* Koyu gri başlık rengi */
+    }
+
+    h4 {
+        color: #666; /* Daha açık başlık rengi */
+    }
+
+    hr {
+        border: 0; /* Varsayılan kenarlığı kaldırır */
+        height: 1px;
+        background-color: #ddd; /* Hafif gri çizgi */
+    }
+
+    /* Form Stili */
+    .form-group {
+        margin-bottom: 1rem; /* Form alanları arasında boşluk */
+    }
+
+    input, select {
+        border: 1px solid #ccc; /* Hafif gri kenarlık */
+        border-radius: 4px; /* Yuvarlatılmış köşeler */
+        padding: 0.5rem; /* Yeterli iç boşluk */
+    }
+
+        input:focus, select:focus {
+            border-color: #007bff; /* Odaklanınca mavi kenarlık */
+            outline: none; /* Odaklanmada kenarlık efekti yok */
+        }
+
+    /* Buton Stili */
+    .btn {
+        border-radius: 4px; /* Yuvarlatılmış köşeler */
+        padding: 0.5rem 1rem; /* Buton için yeterli boşluk */
+        color: white; /* Beyaz yazı rengi */
+        border: none; /* Kenarlık yok */
+    }
+
+    .btn-primary {
+        background-color: #007bff; /* Ana renkli buton (mavi) */
+    }
+
+    /* Link Stili */
+    a {
+        text-decoration: none; /* Alt çizgi yok */
+        color: #007bff; /* Mavi renk */
+    }
+
+        a:hover {
+            text-decoration: underline; /* Üzerine gelince altı çizilir */
+        }
+
+    /* Geri dönüş bağlantısı için stil */
+    .back-link {
+        margin-top: 1rem; /* Üst boşluk */
+    }
+</style>
+
+<div class="container mt-5">
+    <!-- Sayfayı ortalar ve üst boşluk sağlar -->
+    <h1>Ürün Güncelle</h1> <!-- Başlık -->
+
+    <h4>Ürün Detayları</h4>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <!-- Formu ortalar ve genişliğini ayarlar -->
+            <form asp-action="Edit">
+                <!-- Hataları gösterir -->
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <!-- Form alanları -->
+                <input type="hidden" asp-for="Id" />
+
+                <div class="form-group">
+                    <label asp-for="CategoryId" class="control-label"></label>
+                    <input asp-for="CategoryId" class="form-control" />
+                    <span asp-validation-for="CategoryId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ProductName" class="control-label"></label>
+                    <input asp-for="ProductName" class="form-control" />
+                    <span asp-validation-for="ProductName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label asp-for="UsedMaterial" class="control-label"></label>
+                    <input asp-for="UsedMaterial" class="form-control" />
+                    <span asp-validation-for="UsedMaterial" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="PhotoUrl" class="control-label"></label>
+                    <input asp-for="PhotoUrl" class="form-control" />
+                    <span asp-validation-for="PhotoUrl" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="MidPhoto" class="control-label"></label>
+                    <input asp-for="MidPhoto" class="form-control" />
+                    <span asp-validation-for="MidPhoto" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="LastPhoto" class="control-label"></label>
+                    <input asp-for="LastPhoto" class="form-control" />
+                    <span asp-validation-for="LastPhoto" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label asp-for="UnitPrice" class="control-label"></label>
+                    <input asp-for="UnitPrice" class="form-control" />
+                    <span asp-validation-for="UnitPrice" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label asp-for="UnitStock" class="control-label"></label>
+                    <input asp-for="UnitStock" class="form-control" />
+                    <span asp-validation-for="UnitStock" class="text-danger"></span>
+                </div>
+
+                <!-- Kaydet ve Geri Dön düğmeleri -->
+                <div class="form-group d-flex justify-content-between">
+                    <!-- Yan yana ve aralıklı -->
+                    <input type="submit" value="Kaydet" class="btn btn-primary" /> <!-- Kaydet butonu -->
+                    <a asp-action="Index" class="btn-link">Geri Dön</a> <!-- Geri Dön butonu -->
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
